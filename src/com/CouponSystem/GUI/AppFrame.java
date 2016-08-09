@@ -79,6 +79,7 @@ public class AppFrame extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		// Open loging window
 		if (e.getSource() == menuItemLogin)
 		{
 			loginScreen logDialog = new loginScreen(this);
@@ -89,6 +90,7 @@ public class AppFrame extends JFrame implements ActionListener
 				return;
 			}
 			
+			// login according to the user type, user name and password from the login window
 			try 
 			{
 				if (loginData[2] == "admin")

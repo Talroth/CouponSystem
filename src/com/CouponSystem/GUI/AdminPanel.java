@@ -132,7 +132,7 @@ public class AdminPanel extends JPanel implements ActionListener
 	tblCompanies = new JTable();
 	tblCompanies.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	
-	
+	// Companies table
 	tblCompanies.setModel(new DefaultTableModel(
 		new Object[][] {
 		},
@@ -142,6 +142,7 @@ public class AdminPanel extends JPanel implements ActionListener
 
 		private static final long serialVersionUID = 1L;
 
+		// allow editing only column 2 and 3
 		public boolean isCellEditable(int row, int column)
 		{
 			return (column == 2 || column == 3);
@@ -151,6 +152,7 @@ public class AdminPanel extends JPanel implements ActionListener
 	
 	tblCompanies.getModel().addTableModelListener(new TableModelListener() {
 		
+		// store which rows were updated
 	@Override
 	public void tableChanged(TableModelEvent e) {
 		int row = e.getFirstRow();
@@ -171,6 +173,7 @@ public class AdminPanel extends JPanel implements ActionListener
 	
 	scrollPane_1.setRowHeaderView(tblCustomer);
 	
+	// Customers table
 	tblCustomer = new JTable();
 	tblCustomer.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	
@@ -250,6 +253,7 @@ public class AdminPanel extends JPanel implements ActionListener
 					JOptionPane.showMessageDialog(getRootPane(), "User is not login");
 				}
 			}
+			// create new customer
 			else if (cmbCompanyOrCustomer.getSelectedItem().toString().equals("customer"))
 			{
 				Customer customer = new Customer(txtCompanyName.getText(), txtPassword.getText());
@@ -298,6 +302,7 @@ public class AdminPanel extends JPanel implements ActionListener
 					}
 				}
 			}
+			// remove customer
 			else if (textSearchCompanyById.getText().isEmpty() && cmbCompanyOrCustomer.getSelectedItem().toString().equals("customer"))
 			{
 				try 
@@ -338,6 +343,7 @@ public class AdminPanel extends JPanel implements ActionListener
 					}
 				}
 			}
+			// update customer
 			else if (textSearchCompanyById.getText().isEmpty() && cmbCompanyOrCustomer.getSelectedItem().toString().equals("customer"))
 			{
 				for (int index = 0; index < rowChangedCustomerTable.length; index++)
@@ -393,6 +399,7 @@ public class AdminPanel extends JPanel implements ActionListener
 			}
 		}
 		
+		// swap between company and customer options
 		else if (e.getSource() == cmbCompanyOrCustomer)
 		{
 			// Change the table location and visibility
@@ -456,6 +463,7 @@ public class AdminPanel extends JPanel implements ActionListener
 		dataModelcustomer.setRowCount(0);
 	}
 	
+	// fill the company's table with company details
 	private void fillCompanyTable()
 	{				
 		resetTable();		
@@ -485,6 +493,7 @@ public class AdminPanel extends JPanel implements ActionListener
 		
 	}
 	
+	// show only company with specific id
 	private void fillCompanyTableById(long id)
 	{
 		resetTable();
@@ -511,6 +520,7 @@ public class AdminPanel extends JPanel implements ActionListener
 
 	}
 	
+	// fill the customer's table with customer details
 	private void fillCustomerTable()
 	{				
 		resetTableCustomer();		
@@ -539,7 +549,7 @@ public class AdminPanel extends JPanel implements ActionListener
 		}
 		
 	}
-	
+	// show only customer with specific id
 	private void fillCustomerTableById(long id)
 	{
 		resetTableCustomer();

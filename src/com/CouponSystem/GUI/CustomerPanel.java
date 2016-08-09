@@ -127,6 +127,7 @@ public class CustomerPanel extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		// load all coupons which were purchased by customer
 		if (e.getSource() == btnAll)
 		{
 			dataModelcustomerForCustomer.setRowCount(0);
@@ -149,6 +150,7 @@ public class CustomerPanel extends JPanel implements ActionListener
 			}
 		}
 		
+		// load user's coupon with filter
 		else if (e.getSource() == btnFilter)
 		{
 			dataModelcustomerForCustomer.setRowCount(0);
@@ -181,6 +183,7 @@ public class CustomerPanel extends JPanel implements ActionListener
 			
 		}
 		
+		// Show all coupons in the system
 		else if (e.getSource() == btnShowCouponsForPurchase)
 		{
 			dataModelcustomerForCustomer.setRowCount(0);
@@ -203,6 +206,7 @@ public class CustomerPanel extends JPanel implements ActionListener
 			}
 		}
 		
+		// Purchase new coupon according to marked in the coupon table row
 		else if (e.getSource() == btnPurchase)
 		{
 			try 
@@ -224,6 +228,7 @@ public class CustomerPanel extends JPanel implements ActionListener
 		}
 	}
 	
+	// Fill the table with coupons list for the customer (filter/own/all coupons)
 	private void fillCustomerTableForCustomerUser(Collection<Coupon> coupons)
 	{
 		ImageIcon ico = null;

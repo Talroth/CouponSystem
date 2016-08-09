@@ -2,6 +2,13 @@ package com.CouponSystem.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
@@ -13,6 +20,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,6 +38,7 @@ import com.CouponSystem.Beans.Coupon;
 import com.CouponSystem.Beans.CouponType;
 import com.CouponSystem.Facade.CompanyFacade;
 import com.CouponSystem.FacadeException.FacadeException;
+import com.mchange.io.FileUtils;
 
 import DAOException.DAOExceptionErrorType;
 
@@ -50,6 +59,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 	private JTextField txtExpiryDateForCompany;
 	private JButton btnFilterForCompany;
 	private JButton btnAllForCompany;
+	private JButton btnUploadImg;
 	private JTable tblCouponForCompany;
 	private DefaultTableModel dataModelcouponForCompany;
 	private ButtonGroup filterGroup;
@@ -99,6 +109,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 		lblCompanyDetails.setBounds(10, 446, 250, 45);
 		try 
 		{
+			// Write company name and email on the panel
 			Company companyTitle = companyUser.getCompanyDetails();
 			lblCompanyDetails.setText("<html>Company: " + companyTitle.getCompName()  +  "<br/> Email: " + companyTitle.getEmail() + "</html>");
 		} 
@@ -129,7 +140,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 		
 		this.add(txtExpiryDateForCompany);
 		
-		
+		// Build coupon table
 		tblCouponForCompany = new JTable();
 		tblCouponForCompany.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
@@ -144,12 +155,14 @@ public class CompanyPanel extends JPanel implements ActionListener
 
 			public boolean isCellEditable(int row, int column)
 			{
+				// allow END_TIME and PRICE columns editing only
 				return (column == 3 || column == 7);
 			}
 			});
 			
 		tblCouponForCompany.getModel().addTableModelListener(new TableModelListener() {
 			
+			// When cell is edited, update the array which row was changed (only for END_DATE and PRICE)
 			@Override
 			public void tableChanged(TableModelEvent e) {
 				int row = e.getFirstRow();
@@ -188,6 +201,11 @@ public class CompanyPanel extends JPanel implements ActionListener
 		btnCreateCoupon.setBounds(68, 412, 136, 23);
 		btnCreateCoupon.addActionListener(this);
 		this.add(btnCreateCoupon);
+		
+		btnUploadImg = new JButton("Upload image");
+		btnUploadImg.setBounds(220,412,136,23);
+		btnUploadImg.addActionListener(this);
+		this.add(btnUploadImg);
 		
 		JLabel lblCouponName = new JLabel("Title:");
 		lblCouponName.setBounds(10, 175, 136, 14);
@@ -252,23 +270,13 @@ public class CompanyPanel extends JPanel implements ActionListener
 		
 		txtImageLocation = new JTextField();
 		txtImageLocation.setBounds(158, 386, 102, 20);
+		txtImageLocation.setEditable(false);
 		this.add(txtImageLocation);
-		
-		// Delete	
-		//lblDeleteChosenCompany = new JLabel("Delete chosen company:");
-		//lblDeleteChosenCompany.setBounds(24, 203, 146, 14);
-		//contentPaneCompany.add(lblDeleteChosenCompany);
-		
 		
 		btnDeleteCoupon.setBounds(502, 435, 144, 23);
 		btnDeleteCoupon.addActionListener(this);
 		this.add(btnDeleteCoupon);
-		
-		// Update
-		//lblUpdateAllCompanies = new JLabel("Update all companies");
-		//lblUpdateAllCompanies.setBounds(24, 233, 122, 14);
-		//contentPaneCompany.add(lblUpdateAllCompanies);
-				
+						
 		btnUpdateCoupon.setBounds(768, 435, 144, 23);
 		btnUpdateCoupon.addActionListener(this);
 		this.add(btnUpdateCoupon);
@@ -279,6 +287,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		// Show all company's coupons in the table
 		if (e.getSource() == btnAllForCompany)
 		{
 			dataModelcouponForCompany.setRowCount(0);
@@ -306,6 +315,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 		
 		else if (e.getSource() == btnFilterForCompany)
 		{
+			// Filter the table according to the filter which was chosen from the radio buttons
 			dataModelcouponForCompany.setRowCount(0);
 						
 			try
@@ -320,7 +330,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 					case 0:
 						coupons = companyUser.getCouponByType(CouponType.valueOf(cmbCouponTypeForCompany.getSelectedItem().toString()));
 						break;
-					
+					// By price
 					case 1:
 						if (txtMinPriceForCompany.getText().isEmpty() || txtMaxPriceForCompany.getText().isEmpty())
 						{
@@ -330,7 +340,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 						
 						coupons = companyUser.getCouponByPrice(Double.parseDouble(txtMinPriceForCompany.getText()), Double.parseDouble(txtMaxPriceForCompany.getText()));
 						break;
-						
+					// By expiration date	
 					case 2:		
 						coupons = companyUser.getCouponByEndDate(LocalDateTime.parse(txtExpiryDateForCompany.getText() + "T00:00"));
 						break;
@@ -433,7 +443,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 			}
 					
 		}
-		
+		// Delete coupon
 		else if (e.getSource() == btnDeleteCoupon)
 		{
 				try 
@@ -451,9 +461,38 @@ public class CompanyPanel extends JPanel implements ActionListener
 					}
 				}
 		}
+		// open dialog window in order to upload new image for coupon
+		else if (e.getSource() == btnUploadImg)
+		{
+			JFileChooser fc = new JFileChooser();
+			int returnVal = fc.showOpenDialog(getRootPane());
+			if (returnVal == JFileChooser.APPROVE_OPTION)
+			{
+				File selectedFile = fc.getSelectedFile();
+				
+				
+				try 
+				{
+					String path = new File(".").getCanonicalPath();
+					File destFile = new File(path + File.separatorChar + "ImagesForCoupon" + 
+							File.separatorChar + selectedFile.getName());
+				    Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.COPY_ATTRIBUTES);
+				    this.txtImageLocation.setText(selectedFile.getName());
+				    JOptionPane.showMessageDialog(getRootPane(), "You have uploaded the file successfully");
+				} 
+				catch (FileAlreadyExistsException eExist)
+				{
+					JOptionPane.showMessageDialog(getRootPane(), "File already been uploaded");
+				}
+				catch (IOException eIO) 
+				{
+					JOptionPane.showMessageDialog(getRootPane(), "General file uploading error");
+				}
+			}
+		}
 		
 	}
-	
+	// Fill the table with coupons list
 	private void fillCouponTableForCompanyUser(Collection<Coupon> coupons)
 	{
 		if (coupons != null)
@@ -468,7 +507,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 			}
 		}
 	}
-	
+	// control the filters, return which filter was chosen
 	private int RadioButtonItenNumber(ButtonGroup btnGroup)
 	{
 		int counter = 0;
