@@ -3,6 +3,7 @@ package com.CouponSystem.GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.CopyOption;
@@ -31,6 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 import com.CouponSystem.Beans.Company;
@@ -41,6 +43,7 @@ import com.CouponSystem.FacadeException.FacadeException;
 import com.mchange.io.FileUtils;
 
 import DAOException.DAOExceptionErrorType;
+
 
 public class CompanyPanel extends JPanel implements ActionListener
 {
@@ -461,21 +464,26 @@ public class CompanyPanel extends JPanel implements ActionListener
 					}
 				}
 		}
+		
 		// open dialog window in order to upload new image for coupon
 		else if (e.getSource() == btnUploadImg)
 		{
-			JFileChooser fc = new JFileChooser();
+			// limit file to png only
+			JFileChooser fc = new JFileChooser();		
+			fc.setAcceptAllFileFilterUsed(false);
+			fc.addChoosableFileFilter(new FileNameExtensionFilter("Portable Network Graphics", "png"));
+			
+			
 			int returnVal = fc.showOpenDialog(getRootPane());
 			if (returnVal == JFileChooser.APPROVE_OPTION)
 			{
 				File selectedFile = fc.getSelectedFile();
-				
-				
+								
 				try 
 				{
 					String path = new File(".").getCanonicalPath();
 					File destFile = new File(path + File.separatorChar + "ImagesForCoupon" + 
-							File.separatorChar + selectedFile.getName());
+					File.separatorChar + selectedFile.getName());
 				    Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.COPY_ATTRIBUTES);
 				    this.txtImageLocation.setText(selectedFile.getName());
 				    JOptionPane.showMessageDialog(getRootPane(), "You have uploaded the file successfully");
