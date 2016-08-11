@@ -1,0 +1,50 @@
+Company details:
+Company [id=0, compName=McHoland, password=f12e12, email=McHoland@gmail.com]
+Company McHoland was created successfully
+Company details:
+Company [id=0, compName=CafeOfea, password=g777, email=CafeOfea@gmail.com]
+Company CafeOfea was created successfully
+Company details:
+Company [id=0, compName=GymX, password=uuu, email=GymX@yahoo.com]
+Company GymX was created successfully
+Updating company e-mail address:
+Company [id=50, compName=McHoland, password=f12e12, email=McHoland@walla.com
+]
+Company e-mail was updated successfully
+Customer details:
+Customer [id=0, custName=Bill Joe, password=bj]
+Customer Bill Joe was created successfully
+Customer details:
+Customer [id=0, custName=Lili Cohen, password=lc]
+Customer Lili Cohen was created successfully
+Customer details:
+Customer [id=0, custName=Gabi Abutbul, password=ga]
+Customer Gabi Abutbul was created successfully
+Company [id=51, compName=CafeOfea, password=g777, email=CafeOfea@gmail.com] create 2 couponsCoupons details for Company [id=51, compName=CafeOfea, password=g777, email=CafeOfea@gmail.com]:
+Coupon [id=84, title=2 cafes and mafe for 19.99 NIS only, startDate=2016-09-22T00:00, endDate=2018-08-22T00:00, amount=3000, type=FOOD, message=The best cafe in the world, price=19.99, image=none]
+Coupon [id=85, title=Breakfast for 69.50 NIS only, startDate=2016-09-22T00:00, endDate=2018-08-22T00:00, amount=3000, type=FOOD, message=The best breakfast in the world, price=69.5, image=none]
+Company [id=50, compName=McHoland, password=f12e12, email=McHoland@walla.com
+] create a couponCoupons details for Company [id=50, compName=McHoland, password=f12e12, email=McHoland@walla.com
+]:
+Coupon [id=86, title=1/2 price burger, startDate=2016-10-08T00:00, endDate=2017-12-08T00:00, amount=70, type=FOOD, message=The best BURGER in the world, price=34.2, image=none]
+Company [id=52, compName=GymX, password=uuu, email=GymX@yahoo.com] create a couponCoupons details for Company [id=52, compName=GymX, password=uuu, email=GymX@yahoo.com]:
+Coupon [id=87, title=Take 3 Trainings pay for 2, startDate=2014-10-05T00:00, endDate=2016-12-05T00:00, amount=100, type=SPORTS, message=The coolest GYM in the world, price=450.0, image=none]
+Customer Bill Joe going to Purchase 1 coupon from the GYM
+Customer Bill Joe coupon list:
+Coupon [id=87, title=Take 3 Trainings pay for 2, startDate=2014-10-05T00:00, endDate=2016-12-05T00:00, amount=99, type=SPORTS, message=The coolest GYM in the world, price=450.0, image=none]
+Customer Bill Joe going to Purchase 1 coupon from the McHoland
+Customer Bill Joe coupon list:
+Coupon [id=86, title=1/2 price burger, startDate=2016-10-08T00:00, endDate=2017-12-08T00:00, amount=69, type=FOOD, message=The best BURGER in the world, price=34.2, image=none]
+Coupon [id=87, title=Take 3 Trainings pay for 2, startDate=2014-10-05T00:00, endDate=2016-12-05T00:00, amount=99, type=SPORTS, message=The coolest GYM in the world, price=450.0, image=none]
+Bill Joe FOOD coupons:
+Coupon [id=86, title=1/2 price burger, startDate=2016-10-08T00:00, endDate=2017-12-08T00:00, amount=69, type=FOOD, message=The best BURGER in the world, price=34.2, image=none]
+Bill Joe coupon with max price of 150:
+Coupon [id=86, title=1/2 price burger, startDate=2016-10-08T00:00, endDate=2017-12-08T00:00, amount=69, type=FOOD, message=The best BURGER in the world, price=34.2, image=none]
+GYM coupon going to be updated to expired 2 days ago
+Company [id=51, compName=CafeOfea, password=g777, email=CafeOfea@gmail.com] delete one of its couponCoupons details for Company [id=51, compName=CafeOfea, password=g777, email=CafeOfea@gmail.com]:
+Coupon [id=84, title=2 cafes and mafe for 19.99 NIS only, startDate=2016-09-22T00:00, endDate=2018-08-22T00:00, amount=3000, type=FOOD, message=The best cafe in the world, price=19.99, image=none]
+Lili decide to stop using our service, therefore will be removed
+List of users:
+Customer [id=117, custName=Robert Woo, password=rw1234]
+Customer [id=130, custName=Bill Joe, password=bj]
+Customer [id=132, custName=Gabi Abutbul, password=ga]

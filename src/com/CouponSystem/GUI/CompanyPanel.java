@@ -122,7 +122,7 @@ public class CompanyPanel extends JPanel implements ActionListener
 		
 		cmbCouponTypeForCompany = new JComboBox<String>();
 		cmbCouponTypeForCompany.setBounds(133, 42, 166, 20);
-		cmbCouponTypeForCompany.setModel(new DefaultComboBoxModel<String>(new String[] {"", "RESTURANS", "ELECTRICTY", "FOOD", "HEALTH", "SPORTS", "CAMPING", "TRAVELLING", "OTHER"}));
+		cmbCouponTypeForCompany.setModel(new DefaultComboBoxModel<String>(new String[] {"RESTURANS", "ELECTRICTY", "FOOD", "HEALTH", "SPORTS", "CAMPING", "TRAVELLING", "OTHER"}));
 		
 		this.add(cmbCouponTypeForCompany);
 		this.add(radioCouponPriceFilter);
@@ -438,6 +438,10 @@ public class CompanyPanel extends JPanel implements ActionListener
 			catch (FacadeException eFacde)
 			{
 				JOptionPane.showMessageDialog(getRootPane(), eFacde.getMessage());
+			}
+			catch (NumberFormatException | DateTimeParseException eNum)
+			{
+				JOptionPane.showMessageDialog(getRootPane(), "Wrong type of value");
 			}
 					
 		}
