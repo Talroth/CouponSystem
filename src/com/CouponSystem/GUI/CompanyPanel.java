@@ -3,10 +3,7 @@ package com.CouponSystem.GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.CopyOption;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -40,8 +37,6 @@ import com.CouponSystem.Beans.Coupon;
 import com.CouponSystem.Beans.CouponType;
 import com.CouponSystem.Facade.CompanyFacade;
 import com.CouponSystem.FacadeException.FacadeException;
-import com.mchange.io.FileUtils;
-
 import DAOException.DAOExceptionErrorType;
 
 

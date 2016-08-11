@@ -1,3 +1,0 @@
-Company details:
-Company [id=0, compName=McHoland, password=f12e12, email=McHoland@gmail.com]
-Connection error, please refer to system admin

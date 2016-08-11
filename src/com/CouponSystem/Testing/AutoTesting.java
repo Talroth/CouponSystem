@@ -1,13 +1,9 @@
 package com.CouponSystem.Testing;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.concurrent.TimeUnit;
-
 import com.CouponSystem.Beans.Company;
 import com.CouponSystem.Beans.Coupon;
 import com.CouponSystem.Beans.CouponType;
@@ -192,14 +188,14 @@ public class AutoTesting
 				}
 				//************************************************************************************************************	
 				
-				out.write("Lili decide to stop using our service, therefore will be remove" + newline);
+				out.write("Lili decide to stop using our service, therefore will be removed" + newline);
 				adminUser.removeCustomer(customer[1]);
 				out.write("List of users:" + newline);
 				for (Customer cust : adminUser.getAllCustomer())
 				{
 					out.write(cust.toString() + newline);
-				}				//************************************************************************************************************	
-				
+				}				
+				//************************************************************************************************************					
 			} 
 
 		catch (FacadeException e) 
