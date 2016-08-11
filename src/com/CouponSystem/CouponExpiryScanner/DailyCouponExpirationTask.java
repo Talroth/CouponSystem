@@ -62,6 +62,7 @@ public class DailyCouponExpirationTask implements Runnable {
 		catch (DAOException e)
 		{
 			System.out.println("Fail to remove expired coupons");
+			inProgress = false;
 		}
 		
 	}

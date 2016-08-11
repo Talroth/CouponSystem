@@ -83,11 +83,10 @@ public class CouponSystem
 		{
 			// Waiting until the scanner will end the current session prior closing it
 			// if it taking too much time it will also be closed
-			int maxWaiting = 0;
-			while (task.isInProgress() && maxWaiting < 1000)
+
+			while (task.isInProgress())
 			{
 				Thread.sleep(10);
-				maxWaiting++;
 			}
 			try
 			{
