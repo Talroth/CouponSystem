@@ -29,8 +29,8 @@ public class CouponSystem
 
 	// Default value for the scanner
 	
-	private final long delay = 120;
-	private final TimeUnit units = TimeUnit.SECONDS;
+	private final long delay = 1;
+	private final TimeUnit units = TimeUnit.DAYS;
 	//
 	// Constructor
 	//

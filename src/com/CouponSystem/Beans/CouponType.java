@@ -1,7 +1,10 @@
 package com.CouponSystem.Beans;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 // Enum of coupon types
 
+@XmlRootElement
 public enum CouponType 
 {
 	RESTURANS("RESTURANS"),

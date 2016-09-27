@@ -2,6 +2,9 @@ package com.CouponSystem.Beans;
 
 import java.util.*;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Customer 
 {
 

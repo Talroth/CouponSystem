@@ -2,6 +2,11 @@ package com.CouponSystem.Beans;
 
 import java.time.*;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import com.CouponSystem.JSONSerial.*;
+
+@XmlRootElement
 public class Coupon 
 {
 	
@@ -11,7 +16,9 @@ public class Coupon
 	
 	private long id;
 	private String title = null;
+	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
 	private LocalDateTime startDate;
+	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
 	private LocalDateTime endDate;
 	private int amount = 0;
 	private CouponType type = CouponType.OTHER;
