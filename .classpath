@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/Google Drive/CouponSystem/c3p0-0.9.5.2/lib/c3p0-0.9.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/Google Drive/CouponSystem/c3p0-0.9.5.2/lib/mchange-commons-java-0.2.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/Google Drive/CouponSystem/jackson-annotations-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/Google Drive/CouponSystem/jackson-core-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/Google Drive/CouponSystem/jackson-datatype-jsr310-2.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/Google Drive/CouponSystem/src/jackson-databind-2.8.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

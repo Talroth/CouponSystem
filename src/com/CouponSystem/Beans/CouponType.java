@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public enum CouponType 
 {
 	RESTURANS("RESTURANS"),
-	ELECTRICTY("ELECTRICTY"),
+	ELECTRICITY("ELECTRICITY"),
 	FOOD("FOOD"),
 	HEALTH("HEALTH"),
 	SPORTS("SPORTS"),
