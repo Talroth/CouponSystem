@@ -553,7 +553,7 @@ public class ConsoleGUI
 		switch (choice)
 		{
 			case 1: { type = CouponType.RESTURANS; break;}
-			case 2: { type = CouponType.ELECTRICTY; break;}
+			case 2: { type = CouponType.ELECTRICITY; break;}
 			case 3: { type = CouponType.FOOD; break;}
 			case 4: { type = CouponType.HEALTH; break;}
 			case 5: { type = CouponType.SPORTS; break;}
