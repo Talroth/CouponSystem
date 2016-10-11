@@ -30,7 +30,7 @@ public class AdminFacade implements CouponClientFacade
 	// methods
 	//
 	
-	public void createCustomer(Customer customer) throws FacadeException
+	public Customer createCustomer(Customer customer) throws FacadeException
 	{
 		if (customer == null) { throw new FacadeException(DAOExceptionErrorType.NEW_CUSTOMER_FAILED, "Customer details to create don't exist"); }
 		// create new customer, prevent from creating customer with a name already exists
@@ -45,6 +45,7 @@ public class AdminFacade implements CouponClientFacade
 			}
 							
 			customer.setId(customerDao.createCustomer(customer));
+			
 		}
 		
 		catch (DAOException e)
@@ -60,6 +61,7 @@ public class AdminFacade implements CouponClientFacade
 			}
 
 		}
+		return customer;
 	}
 
 
