@@ -1,11 +1,14 @@
 package com.CouponSystem.FacadeException;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import DAOException.DAOException;
 import DAOException.DAOExceptionErrorType;
 
+@XmlRootElement
 public class FacadeException extends Exception 
 {
-	
+	public String message;
 	/**
 	 * 
 	 */
@@ -21,12 +24,14 @@ public class FacadeException extends Exception
 	public FacadeException(String message)
 	{
 		super(message);
+		this.message = message;
 		daoException = null;
 	}
 	
 	public FacadeException(DAOException DAOException, String message)
 	{
 		super(message);
+		this.message = message;
 		daoException = DAOException.getReason();
 	}
 	
@@ -50,7 +55,13 @@ public class FacadeException extends Exception
 	public FacadeException(DAOExceptionErrorType errorType, String message)
 	{
 		super(message);
+		this.message = message;
 		this.daoException = errorType;
+	}
+	
+	public String getMessage()
+	{
+		return this.message;
 	}
 	
 }
