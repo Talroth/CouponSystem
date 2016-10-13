@@ -87,6 +87,7 @@ public class AdminFacade implements CouponClientFacade
 		try
 		{
 			Customer cust = customerDao.getCustomer(customer.getId());
+			if (cust == null) { throw new FacadeException(DAOExceptionErrorType.UPDATE_CUSTOMER_FAILED,"Customer not exists in the data storing system"); }
 			if (!(cust.getCustName().equals(customer.getCustName())))
 			{
 				throw new FacadeException(DAOExceptionErrorType.UPDATE_CUSTOMER_FAILED,"Updating customer name is not valid");
@@ -124,13 +125,12 @@ public class AdminFacade implements CouponClientFacade
 		} 
 		catch (DAOException e) 
 		{
-			throw new FacadeException(e);
-			
+			throw new FacadeException(e.getReason(), e.getMessage());			
 		}
 	}
 
 
-	public void createCompany(Company company) throws FacadeException
+	public Company createCompany(Company company) throws FacadeException
 	{
 		if (company == null) { throw new FacadeException(DAOExceptionErrorType.NEW_COMPANY_FAILED,"Faild to create new company due to lack in data of the new company"); }
 		
@@ -143,6 +143,8 @@ public class AdminFacade implements CouponClientFacade
 			}
 						
 			company.setId(compDao.createCompany(company));
+			
+			return company;
 
 		}
 		catch (DAOException e)
@@ -176,6 +178,7 @@ public class AdminFacade implements CouponClientFacade
 		try
 		{
 			Company comp = compDao.getCompany(company.getId());
+			if (comp == null) { throw new FacadeException(DAOExceptionErrorType.UPDATE_COMPANY_FAILED, "Faild to update company"); }
 			if (!(comp.getCompName().equals(company.getCompName())))
 			{
 				throw new FacadeException(DAOExceptionErrorType.UPDATE_COMPANY_FAILED, "Updating company name is not valid");
