@@ -1,8 +1,11 @@
 package com.CouponSystem.DBDAO;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 //
 // Enum for fields of coupon table
 //
+
 
 public enum CouponField 
 {
