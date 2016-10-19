@@ -159,7 +159,7 @@ public class CompanyFacade implements CouponClientFacade
 		} 
 		catch (DAOException e) 
 		{
-			throw new FacadeException(e);
+			throw new FacadeException(e.getMessage());
 		}
 	}
 	
