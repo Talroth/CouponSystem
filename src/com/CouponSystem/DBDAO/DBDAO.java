@@ -55,7 +55,7 @@ public class DBDAO
 			ds.setUser("root");       
 			
 			// set password of the DB
-			ds.setPassword("admin"); 
+			ds.setPassword("root"); 
 			
 			// Max number of prepared statement
 			ds.setMaxStatements(180);
