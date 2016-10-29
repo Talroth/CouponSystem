@@ -1,8 +1,10 @@
 package com.CouponSystem.Beans;
 
+
 import java.time.*;
 
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,8 +15,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+
 @XmlRootElement
 //@JsonDeserialize(using = CouponJsonDeserializer.class)
+
 
 public class Coupon 
 {
@@ -96,12 +100,15 @@ public class Coupon
 
 	@JsonSetter("endDate")
 	public void setEndDate(LocalDateTime endDate) {
-		System.out.println("*** " + endDate);
+		System.out.println("* " + endDate);
 		if (this.startDate != null && this.startDate.isAfter(endDate))
 		{
 			throw new IllegalArgumentException("Start date must to be before End date");
 		}
 		this.endDate = endDate;
+		System.out.println("** " + endDate);
+		System.out.println("*** " + this.endDate);
+		System.out.println("**** " + this.getEndDate());
 	}
 
 	public int getAmount() {
@@ -109,6 +116,7 @@ public class Coupon
 	}
 
 	public void setAmount(int amount) {
+		System.out.println("<<" + amount + ">>");
 		if (amount < 0)
 		{
 			throw new IllegalArgumentException("Amount must to be 0 or bigger");
