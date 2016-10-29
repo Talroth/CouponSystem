@@ -1,6 +1,7 @@
 package com.CouponSystem.Beans;
 
 
+import java.io.Serializable;
 import java.time.*;
 
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,6 +12,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.CouponSystem.JSONSerial.*;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -20,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 //@JsonDeserialize(using = CouponJsonDeserializer.class)
 
 
-public class Coupon 
+public class Coupon implements Serializable
 {
 	
 	//
@@ -48,7 +50,31 @@ public class Coupon
 		
 	}
 
-
+	public Coupon(long id, String title, LocalDateTime startDate, LocalDateTime endDate, int amount, CouponType type, String message, double price, String image)
+	{
+		this.setId(id);
+		this.setTitle(title);
+		this.setStartDate(startDate); 
+		this.setEndDate(endDate); 
+		this.setAmount(amount); 
+		this.setType(type); 
+		this.setMessage(message); 
+		this.setPrice(price);
+		this.setImage(image); 
+	}
+	
+	public Coupon(Coupon coupon)
+	{
+		this.setId(coupon.getId());
+		this.setTitle(coupon.getTitle());
+		this.setStartDate(coupon.getStartDate()); 
+		this.setEndDate(coupon.getEndDate()); 
+		this.setAmount(coupon.getAmount()); 
+		this.setType(coupon.getType()); 
+		this.setMessage(coupon.getMessage()); 
+		this.setPrice(coupon.getPrice());
+		this.setImage(coupon.getImage()); 
+	}
 	
 	//
 	// getter and setters
@@ -92,13 +118,15 @@ public class Coupon
 		this.startDate = startDate;
 	}
 
-	@JsonGetter("endDate")
+
 	public LocalDateTime getEndDate() 
 	{
+		System.out.println("check getter - " + endDate);
 		return endDate;
 	}
 
-	@JsonSetter("endDate")
+
+
 	public void setEndDate(LocalDateTime endDate) {
 		System.out.println("* " + endDate);
 		if (this.startDate != null && this.startDate.isAfter(endDate))
