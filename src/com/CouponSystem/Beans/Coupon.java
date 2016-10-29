@@ -1,28 +1,18 @@
 package com.CouponSystem.Beans;
 
 
-import java.io.Serializable;
 import java.time.*;
 
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.CouponSystem.JSONSerial.*;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 
 @XmlRootElement
 //@JsonDeserialize(using = CouponJsonDeserializer.class)
 
 
-public class Coupon implements Serializable
+public class Coupon 
 {
 	
 	//
@@ -173,6 +163,7 @@ public class Coupon implements Serializable
 	}
 
 	public void setPrice(double price) {
+		System.out.println("set price: " + price);
 		if (price < 0)
 		{
 			throw new IllegalArgumentException("Price must to be 0 or more");
