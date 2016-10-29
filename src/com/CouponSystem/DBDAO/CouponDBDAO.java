@@ -406,6 +406,11 @@ public class CouponDBDAO implements CouponDAO
 			
 			throw new DAOException(DAOExceptionErrorType.NEW_COUPON_OBJECT_FAILED, "Faiure in coupon processing");
 		}
+		
+		catch (IllegalArgumentException eIll)
+		{
+			throw new DAOException(DAOExceptionErrorType.NEW_COUPON_OBJECT_FAILED, eIll.getMessage());
+		}
 
 	}
 

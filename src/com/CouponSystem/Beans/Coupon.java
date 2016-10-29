@@ -2,11 +2,20 @@ package com.CouponSystem.Beans;
 
 import java.time.*;
 
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.CouponSystem.JSONSerial.*;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @XmlRootElement
+//@JsonDeserialize(using = CouponJsonDeserializer.class)
+
 public class Coupon 
 {
 	
@@ -79,12 +88,15 @@ public class Coupon
 		this.startDate = startDate;
 	}
 
+	@JsonGetter("endDate")
 	public LocalDateTime getEndDate() 
 	{
 		return endDate;
 	}
 
+	@JsonSetter("endDate")
 	public void setEndDate(LocalDateTime endDate) {
+		System.out.println("*** " + endDate);
 		if (this.startDate != null && this.startDate.isAfter(endDate))
 		{
 			throw new IllegalArgumentException("Start date must to be before End date");
