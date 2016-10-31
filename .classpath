@@ -2,12 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="src/jackson-databind-2.8.2.jar"/>
-	<classpathentry kind="lib" path="jackson-annotations-2.8.2.jar"/>
-	<classpathentry kind="lib" path="jackson-core-2.8.2.jar"/>
-	<classpathentry kind="lib" path="jackson-datatype-jsr310-2.8.2.jar"/>
 	<classpathentry kind="lib" path="c3p0-0.9.5.2.jar"/>
 	<classpathentry kind="lib" path="mchange-commons-java-0.2.11.jar"/>
 	<classpathentry kind="lib" path="mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="jackson-annotations-2.8.2.jar"/>
+	<classpathentry kind="lib" path="jackson-core-2.8.2.jar"/>
+	<classpathentry kind="lib" path="jackson-datatype-jsr310-2.8.2.jar"/>
+	<classpathentry kind="lib" path="src/jackson-databind-2.8.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

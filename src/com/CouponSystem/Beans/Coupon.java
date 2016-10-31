@@ -1,14 +1,21 @@
 package com.CouponSystem.Beans;
 
 
+import java.io.Serializable;
 import java.time.*;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.CouponSystem.JSONSerial.*;
+import javax.xml.bind.annotation.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 
 @XmlRootElement
+//@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 //@JsonDeserialize(using = CouponJsonDeserializer.class)
 
 
@@ -23,11 +30,16 @@ public class Coupon
 	private String title = null;
 	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
 	private LocalDateTime startDate;
+	
+	
 	@XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
 	private LocalDateTime endDate;
+	
 	private int amount = 0;
 	private CouponType type = CouponType.OTHER;
 	private String message = null;
+	
+//	@JsonProperty("price")
 	private double price = 0;
 	private String image = "None";
 	
@@ -108,25 +120,24 @@ public class Coupon
 		this.startDate = startDate;
 	}
 
-
+	
 	public LocalDateTime getEndDate() 
 	{
 		System.out.println("check getter - " + endDate);
 		return endDate;
 	}
 
-
-
+	
 	public void setEndDate(LocalDateTime endDate) {
-		System.out.println("* " + endDate);
+
+
 		if (this.startDate != null && this.startDate.isAfter(endDate))
 		{
+			System.out.println("inside endDate setter error");
 			throw new IllegalArgumentException("Start date must to be before End date");
 		}
 		this.endDate = endDate;
-		System.out.println("** " + endDate);
-		System.out.println("*** " + this.endDate);
-		System.out.println("**** " + this.getEndDate());
+
 	}
 
 	public int getAmount() {
@@ -162,10 +173,12 @@ public class Coupon
 		return price;
 	}
 
+	@JsonSetter("price")
 	public void setPrice(double price) {
 		System.out.println("set price: " + price);
 		if (price < 0)
 		{
+			System.out.println("inside price setter error");
 			throw new IllegalArgumentException("Price must to be 0 or more");
 		}
 		this.price = price;
