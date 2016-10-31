@@ -1,17 +1,12 @@
 package com.CouponSystem.Beans;
 
 
-import java.io.Serializable;
 import java.time.*;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.CouponSystem.JSONSerial.*;
-import javax.xml.bind.annotation.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 
 @XmlRootElement
@@ -175,12 +170,13 @@ public class Coupon
 
 	@JsonSetter("price")
 	public void setPrice(double price) {
-		System.out.println("set price: " + price);
+		System.out.println("-*" + price + "*-");
 		if (price < 0)
 		{
 			System.out.println("inside price setter error");
 			throw new IllegalArgumentException("Price must to be 0 or more");
 		}
+		System.out.println("-*" + price + "*-");
 		this.price = price;
 	}
 
