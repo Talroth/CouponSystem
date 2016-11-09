@@ -6,7 +6,7 @@ import java.time.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.CouponSystem.JSONSerial.*;
-import com.fasterxml.jackson.annotation.JsonSetter;
+
 
 
 @XmlRootElement
@@ -168,7 +168,6 @@ public class Coupon
 		return price;
 	}
 
-	@JsonSetter("price")
 	public void setPrice(double price) {
 		System.out.println("-*" + price + "*-");
 		if (price < 0)

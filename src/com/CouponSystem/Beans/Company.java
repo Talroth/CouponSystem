@@ -4,9 +4,10 @@ import java.util.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 @XmlRootElement
 // Bean class for company
-public class Company 
+public class Company
 {
 	
 	//

@@ -201,6 +201,7 @@ public class CompanyDBDAO implements CompanyDAO
 	@Override
 	public Company getCompany(long id) throws DAOException
 	{
+		System.out.println("DBDao getCompany start");
 		String sql = "SELECT * FROM couponsystem.company WHERE ID = ?";
 		try (Connection con = pool.OpenConnection(); PreparedStatement preparedStatement = con.prepareStatement(sql);)
 		{	
@@ -234,6 +235,7 @@ public class CompanyDBDAO implements CompanyDAO
 		}
 		catch (SQLException e)
 		{
+			System.out.println("DBDao getCompany sql exception zone");
 			if (e.getMessage() == "Connection was not established")
 			{
 				throw new DAOException(DAOExceptionErrorType.CONNECTION_CLOSED, "Connection error, please refer to system admin");
