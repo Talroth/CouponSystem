@@ -50,7 +50,7 @@ public class Company
 	}
 
 	public void setId(long id) {
-		if (id > 0)
+		if (id >= 0)
 		{
 			this.id = id;
 		}

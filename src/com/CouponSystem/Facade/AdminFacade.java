@@ -43,7 +43,7 @@ public class AdminFacade implements CouponClientFacade
 			{
 				throw new FacadeException(DAOExceptionErrorType.NEW_CUSTOMER_FAILED, "Customer exists");
 			}
-							
+			
 			customer.setId(customerDao.createCustomer(customer));
 			
 		}
@@ -141,7 +141,7 @@ public class AdminFacade implements CouponClientFacade
 			{
 				throw new FacadeException(DAOExceptionErrorType.COMPLETED,"Company exists");
 			}
-						
+		
 			company.setId(compDao.createCompany(company));
 			
 			return company;
@@ -199,12 +199,10 @@ public class AdminFacade implements CouponClientFacade
 	{
 		try 
 		{
-			System.out.println("adminFacade getCompany");
 			return compDao.getCompany(id);
 		} 
 		catch (DAOException e) 
 		{
-			System.out.println("adminFacade exception of getCompany zone");
 			throw new FacadeException(e);
 		}
 	}
