@@ -20,5 +20,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/JavaServers/jboss-5.1.0.GA/common/lib/jboss-javaee.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
