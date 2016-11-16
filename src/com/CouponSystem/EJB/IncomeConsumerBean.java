@@ -1,19 +1,35 @@
 package com.CouponSystem.EJB;
 
 import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
+import com.CouponSystem.Beans.Income;
+
 /**
  * Message-Driven Bean implementation class for: IncomeConsumerBean
  */
-@MessageDriven(
-		activationConfig = { @ActivationConfigProperty(
-				propertyName = "destinationType", propertyValue = "javax.jms.Queue")
-		})
+//@MessageDriven(
+//		activationConfig = { @ActivationConfigProperty(
+//				propertyName = "destinationType", propertyValue = "javax.jms.Queue")
+//		})
+
+
+@MessageDriven(name = "HelloWorldQueueMDB", activationConfig = {
+ @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+ @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/IncomeConsumerQueue"),
+ @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+ 
+//@ClusteredSingleton
+
 public class IncomeConsumerBean implements MessageListener {
 
+	// not sure here, it maybe should be in the IncomeServiceBean
+	@EJB
+	private IncomeServiceBean incomeProcess;
+	
     /**
      * Default constructor. 
      */
@@ -25,8 +41,13 @@ public class IncomeConsumerBean implements MessageListener {
      * @see MessageListener#onMessage(Message)
      */
     public void onMessage(Message message) {
-        // TODO Auto-generated method stub
-        
+    	
+    	// pass the income request to processing by EJB IncomeServiceBean
+    	if (message instanceof Income)
+    	{
+    		incomeProcess.storeIncome((Income)message);
+    	}
+    	
     }
 
 }

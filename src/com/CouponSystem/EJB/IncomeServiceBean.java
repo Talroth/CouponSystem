@@ -2,6 +2,7 @@ package com.CouponSystem.EJB;
 
 import java.util.Collection;
 
+
 import javax.ejb.Stateless;
 
 
@@ -17,6 +18,7 @@ public class IncomeServiceBean implements IncomeService {
 
     public IncomeServiceBean() {
        
+    	
     }
 
 	@Override

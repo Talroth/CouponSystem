@@ -13,6 +13,8 @@ import com.CouponSystem.Beans.IncomeType;
 
 public class JPAtest {
 public static void main(String[] args) {
+	
+	
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-example");
     EntityManager em = emf.createEntityManager();
     
