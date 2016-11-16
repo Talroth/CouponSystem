@@ -10,8 +10,8 @@ import com.CouponSystem.JSONSerial.*;
 
 
 @XmlRootElement
-//@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-//@JsonDeserialize(using = CouponJsonDeserializer.class)
+
+
 
 
 public class Coupon 
@@ -118,7 +118,6 @@ public class Coupon
 	
 	public LocalDateTime getEndDate() 
 	{
-		System.out.println("check getter - " + endDate);
 		return endDate;
 	}
 
@@ -128,7 +127,6 @@ public class Coupon
 
 		if (this.startDate != null && this.startDate.isAfter(endDate))
 		{
-			System.out.println("inside endDate setter error");
 			throw new IllegalArgumentException("Start date must to be before End date");
 		}
 		this.endDate = endDate;
@@ -140,7 +138,6 @@ public class Coupon
 	}
 
 	public void setAmount(int amount) {
-		System.out.println("<<" + amount + ">>");
 		if (amount < 0)
 		{
 			throw new IllegalArgumentException("Amount must to be 0 or bigger");
@@ -169,13 +166,11 @@ public class Coupon
 	}
 
 	public void setPrice(double price) {
-		System.out.println("-*" + price + "*-");
 		if (price < 0)
 		{
-			System.out.println("inside price setter error");
 			throw new IllegalArgumentException("Price must to be 0 or more");
 		}
-		System.out.println("-*" + price + "*-");
+
 		this.price = price;
 	}
 

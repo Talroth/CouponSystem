@@ -16,7 +16,7 @@ public static void main(String[] args) {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-example");
     EntityManager em = emf.createEntityManager();
     
-    Income income = new Income(2,"t", LocalDateTime.now(), IncomeType.COMPANY_NEW_COUPON,10D);
+    Income income = new Income(3,"t", LocalDateTime.now(), IncomeType.COMPANY_NEW_COUPON,10D);
     em.getTransaction().begin();
 
     em.persist(income);

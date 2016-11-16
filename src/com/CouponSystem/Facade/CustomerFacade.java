@@ -51,7 +51,6 @@ public class CustomerFacade implements CouponClientFacade
 		}
 		
 		
-		//CustomerCouponDBDAO customerCoupon = new CustomerCouponDBDAO();
 		int amountOfCoupons = coupon.getAmount();
 		try 
 		{

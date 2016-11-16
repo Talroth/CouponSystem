@@ -49,14 +49,6 @@ public class CompanyFacade implements CouponClientFacade
 				throw new FacadeException(DAOExceptionErrorType.NEW_COUPON_FAILED,"Coupon already exists");
 			}
 			
-//			Collection<Coupon> coupons = couponDao.getAllCoupons();
-//			for (Coupon c : coupons)
-//			{
-//				if (c.getTitle().equals(coupon.getTitle()))
-//				{
-//					throw new FacadeException(DAOExceptionErrorType.NEW_COUPON_FAILED,"Coupon already exists");
-//				}
-//			}
 			couponDao.createCoupon(coupon,companyLog);
 		} 
 		catch (DAOException e) 
@@ -228,7 +220,6 @@ public class CompanyFacade implements CouponClientFacade
 	
 	public Company getCompanyDetails() throws FacadeException
 	{
-		//TODO: non editable object need to be return
 		return companyLog;
 	}
 	

@@ -97,7 +97,7 @@ public class FilterCouponDBDao implements FilterCouponDao {
 
 	@Override
 	public int length() throws DAOException {
-		// return number of filters in the filkters list
+		// return number of filters in the filters list
 		return filters.size();
 	}
 
