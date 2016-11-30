@@ -27,7 +27,7 @@ import com.CouponSystem.Beans.Income;
 public class IncomeConsumerBean implements MessageListener {
 
 	// not sure here, it maybe should be in the IncomeServiceBean
-	@EJB
+	@EJB(lookup="java:module/IncomeServiceBean!com.CouponSystem.EJB.IncomeService")
 	private IncomeServiceBean incomeProcess;
 	
     /**
