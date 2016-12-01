@@ -32,8 +32,9 @@ public class IncomeServiceBean implements IncomeService {
     }
 
 	@Override
-	public void storeIncome(Income income) {
-
+	public void storeIncome(Income income) 
+	{
+		System.out.println("Store item in OncomeServiceBean");
 		// hibernate session
 		Session session = factory.openSession();
 		session.save(income);
