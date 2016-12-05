@@ -6,25 +6,35 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="c3p0-0.9.5.2.jar"/>
-	<classpathentry kind="lib" path="mchange-commons-java-0.2.11.jar"/>
-	<classpathentry kind="lib" path="mysql-connector-java-5.1.40-bin.jar"/>
-	<classpathentry kind="lib" path="D:/Tal/Programing/wildfly-10.1.0.Final/modules/system/layers/base/javax/ejb/api/main/jboss-ejb-api_3.2_spec-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="D:/Tal/Programing/wildfly-10.1.0.Final/modules/system/layers/base/javax/jms/api/main/jboss-jms-api_2.0_spec-1.0.0.Final.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/WildFly 10.0 Runtime">
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/.m2/repository/org/jboss/spec/javax/ejb/jboss-ejb-api_3.1_spec/1.0.2.Final/jboss-ejb-api_3.1_spec-1.0.2.Final.jar">
 		<attributes>
-			<attribute name="owner.project.facets" value="jst.utility"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="jboss-ejb-api_3.1_spec-1.0.2.Final.jar"/>
+			<attribute name="maven.groupId" value="org.jboss.spec.javax.ejb"/>
+			<attribute name="maven.artifactId" value="jboss-ejb-api_3.1_spec"/>
+			<attribute name="maven.version" value="1.0.2.Final"/>
+			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_111">
+	<classpathentry kind="lib" path="C:/Users/Tal_Mor/.m2/repository/org/apache/activemq/activemq-all/5.14.1/activemq-all-5.14.1.jar">
 		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="activemq-all-5.14.1.jar"/>
+			<attribute name="maven.groupId" value="org.apache.activemq"/>
+			<attribute name="maven.artifactId" value="activemq-all"/>
+			<attribute name="maven.version" value="5.14.1"/>
+			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
