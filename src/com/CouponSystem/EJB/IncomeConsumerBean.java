@@ -6,6 +6,7 @@ import javax.ejb.MessageDriven;
 import javax.jms.*;
 
 import org.jboss.ejb3.annotation.DeliveryActive;
+import org.jboss.ejb3.annotation.ResourceAdapter;
 import org.jboss.logging.Logger;
 
 import com.CouponSystem.Beans.Income;
@@ -23,12 +24,13 @@ import com.CouponSystem.Beans.Income;
  @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 // @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/IncomeConsumerQueue"),
  @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/TestQ"),
+ //@ActivationConfigProperty(propertyName  = "connectionFactoryJndiName",propertyValue = "jms/RemoteConnectionFactory"),
  @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
  
-@DeliveryActive(true)
+//@DeliveryActive(true)
 
 //@ClusteredSingleton
-
+//@ResourceAdapter("activemq-rar-4.1.1.rar")
 public class IncomeConsumerBean implements MessageListener {
 
 	private final static Logger LOGGER = Logger.getLogger(IncomeConsumerBean.class.toString());
