@@ -5,6 +5,9 @@ import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.*;
 
+import org.jboss.ejb3.annotation.DeliveryActive;
+import org.jboss.logging.Logger;
+
 import com.CouponSystem.Beans.Income;
 
 /**
@@ -16,15 +19,20 @@ import com.CouponSystem.Beans.Income;
 //		})
 
 
-@MessageDriven(name = "HelloWorldQueueMDB", activationConfig = {
+@MessageDriven(name = "IncomeConsumerBean", activationConfig = {
  @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
- @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/IncomeConsumerQueue"),
+// @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/IncomeConsumerQueue"),
+ @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/TestQ"),
  @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
  
+@DeliveryActive(true)
+
 //@ClusteredSingleton
 
 public class IncomeConsumerBean implements MessageListener {
 
+	private final static Logger LOGGER = Logger.getLogger(IncomeConsumerBean.class.toString());
+	
 	// not sure here, it maybe should be in the IncomeServiceBean
 	@EJB(lookup="java:module/IncomeServiceBean!com.CouponSystem.EJB.IncomeService")
 	private IncomeServiceBean incomeProcess;
@@ -34,6 +42,7 @@ public class IncomeConsumerBean implements MessageListener {
      */
     public IncomeConsumerBean() {
         // TODO Auto-generated constructor stub
+    	System.out.println("MDB constructor");
     }
 	
 	/**
@@ -41,7 +50,8 @@ public class IncomeConsumerBean implements MessageListener {
      */
     public void onMessage(Message message) {
     	
-    	System.out.println("on message");
+    	LOGGER.info("Received Message from queue");
+    	System.out.println("onMesage ====================================================");
     	// pass the income request to processing by EJB IncomeServiceBean
     	if (message instanceof Income)
     	{

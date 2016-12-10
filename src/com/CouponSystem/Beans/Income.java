@@ -17,7 +17,12 @@ public class Income implements Serializable {
 	// auto works but intefer with localdatetime type
 
 
-//	@GeneratedValue(strategy=GenerationType.AUTO)
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	//	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
 	private String name;
