@@ -4,16 +4,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.CouponSystem.Beans.Income;
+import com.CouponSystem.Beans.IncomeType;
 
 
 /**
@@ -23,8 +28,10 @@ import com.CouponSystem.Beans.Income;
 
 public class IncomeServiceBean implements IncomeService {
 	
-	// Factory for hibernate
-	private static SessionFactory factory = new Configuration().configure().buildSessionFactory();;
+	// Factory for hibernate - not working yet
+	//private static SessionFactory factory = new Configuration().configure().buildSessionFactory();;
+//	@PersistenceContext(unitName = "jpa-example")
+//	Session session;
 	
     public IncomeServiceBean() {
        
@@ -36,14 +43,21 @@ public class IncomeServiceBean implements IncomeService {
 	{
 		System.out.println("Store item in OncomeServiceBean");
 		// hibernate session
-		Session session = factory.openSession();
-		session.save(income);
+//		Session session = factory.openSession();
+//		session.save(income);
+		
+
 	}
 
 	@Override
 	public Collection<Income> viewAllIncomes() {
-		// TODO Auto-generated method stub
-		return null;
+		
+//		Collection<Income> list = session.createCriteria(Income.class).list();
+		
+		Income in = new Income(3,"la", LocalDateTime.now(), IncomeType.COMPANY_UPDATE_COUPON, 10D);
+		Collection<Income> ins = new ArrayList<>();
+		ins.add(in);
+		return ins;
 	}
 
 	@Override
