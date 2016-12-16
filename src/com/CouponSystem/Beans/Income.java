@@ -3,14 +3,17 @@ package com.CouponSystem.Beans;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-@Entity(name = "incomelog")
+@Entity
+@Table(name="incomelog")
 public class Income implements Serializable {
 
 	// MySql - BIGINT
@@ -38,26 +41,34 @@ public class Income implements Serializable {
 	// use DOUBLE in MySql
 	private double amount;
 	
+	private long custId;
+	
+	private long compId;
 	
 	public Income() {
 		
 	}
 	
 	// for income with coupon price (customer purchase a coupon)
-	public Income(long id, String name, LocalDateTime date, IncomeType description, double couponPrice) {
+	public Income(long id, String name, LocalDateTime date, IncomeType description, double couponPrice, long custId, long compId) {
 		this.id = id;
 		this.name = name;
 		this.date = date;
 		this.description = description;
+		this.description = description;
 		this.amount = couponPrice;
+		this.custId = custId;
+		this.compId = compId;
 	}
 	
 	// for income without coupon price 
-	public Income(long id, String name, LocalDateTime date, IncomeType description) {
+	public Income(long id, String name, LocalDateTime date, IncomeType description, long custId, long compId) {
 		this.id = id;
 		this.name = name;
 		this.date = date;
 		this.description = description;
+		this.custId = custId;
+		this.compId = compId;
 	}
 	
 	@Id
@@ -112,15 +123,37 @@ public class Income implements Serializable {
 	
 	// if customer purchase use the price, otherwise use the predefined price
 	public void setAmount(double amount) {
-		// if the action is customer coupon purchase it use the amount according to coupon price
-		if (this.description.isEqual(IncomeType.CUSTOMER_PURCHASE))
-		{
+//		// if the action is customer coupon purchase it use the amount according to coupon price
+//		if (this.description.isEqual(IncomeType.CUSTOMER_PURCHASE))
+//		{
 			this.amount = amount;
-		}
-		else
-		{
-			amount = description.getPrice();
-		}
+//		}
+//		else
+//		{
+//			amount = description.getPrice();
+//		}
+	}
+
+	public long getCustId() {
+		return custId;
+	}
+
+	public void setCustId(long custId) {
+		this.custId = custId;
+	}
+
+	public long getCompId() {
+		return compId;
+	}
+
+	public void setCompId(long compId) {
+		this.compId = compId;
+	}
+
+	@Override
+	public String toString() {
+		return "Income [id=" + id + ", name=" + name + ", date=" + date + ", description=" + description + ", amount="
+				+ amount + "]";
 	}
 	
 	

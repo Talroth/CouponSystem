@@ -10,6 +10,7 @@ import org.jboss.ejb3.annotation.ResourceAdapter;
 import org.jboss.logging.Logger;
 
 import com.CouponSystem.Beans.Income;
+import com.CouponSystem.FacadeException.FacadeException;
 
 /**
  * Message-Driven Bean implementation class for: IncomeConsumerBean
@@ -57,7 +58,12 @@ public class IncomeConsumerBean implements MessageListener {
     	// pass the income request to processing by EJB IncomeServiceBean
     	if (message instanceof Income)
     	{
-    		incomeProcess.storeIncome((Income)message);
+    		try {
+				incomeProcess.storeIncome((Income)message);
+			} catch (FacadeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     	}
     	
     }
