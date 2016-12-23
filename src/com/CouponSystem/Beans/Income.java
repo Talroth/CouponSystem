@@ -56,7 +56,6 @@ public class Income implements Serializable {
 		this.name = name;
 		this.date = date;
 		this.description = description;
-		this.description = description;
 		this.amount = couponPrice;
 		this.custId = custId;
 		this.compId = compId;

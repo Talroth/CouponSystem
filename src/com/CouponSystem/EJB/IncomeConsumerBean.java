@@ -33,8 +33,8 @@ public class IncomeConsumerBean implements MessageListener {
 //	@EJB(lookup="ejb:/CouponSystemWebTier//IncomeServiceBean!com.CouponSystem.EJB.IncomeService")
 //	@EJB(lookup="java:module/IncomeServiceBean!com.CouponSystem.EJB.IncomeService")
 //	@EJB(name="com.CouponSystem.EJB.IncomeService")
-	@EJB
-	private IncomeServiceBean incomeProcess;
+	@EJB(name="IncomeService")
+	private IncomeService incomeProcess;
 	
     /**
      * Default constructor. 
@@ -49,7 +49,7 @@ public class IncomeConsumerBean implements MessageListener {
      */
     public void onMessage(Message message) {
     	
-    	System.out.println("onMesage ====================================================");
+    	System.out.println("onMesage = " + message.toString());
     	// pass the income request to processing by EJB IncomeServiceBean
     	if (message instanceof Income)
     	{
