@@ -18,7 +18,7 @@
   -->  
   <!-- this is local  --> 
     <persistence-unit name="jpa-example" transaction-type="JTA">
-   <!--   <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+  <!--   <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> --> 
 	<jta-data-source>java:jboss/datasources/proj</jta-data-source> 
 	<!-- 
     <properties>

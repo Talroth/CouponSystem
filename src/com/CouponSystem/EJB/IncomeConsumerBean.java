@@ -5,10 +5,6 @@ import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.*;
 
-import org.jboss.ejb3.annotation.DeliveryActive;
-import org.jboss.ejb3.annotation.ResourceAdapter;
-import org.jboss.logging.Logger;
-
 import com.CouponSystem.Beans.Income;
 import com.CouponSystem.FacadeException.FacadeException;
 
@@ -20,24 +16,24 @@ import com.CouponSystem.FacadeException.FacadeException;
 //				propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 //		})
 
+//@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/IncomeConsumerQueue"),
+//@ActivationConfigProperty(propertyName  = "connectionFactoryJndiName",propertyValue = "jms/RemoteConnectionFactory"),
 
-@MessageDriven(name = "IncomeConsumerBean", activationConfig = {
+@MessageDriven(mappedName = "Income", activationConfig = {
  @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-// @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/IncomeConsumerQueue"),
- @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/TestQ"),
- //@ActivationConfigProperty(propertyName  = "connectionFactoryJndiName",propertyValue = "jms/RemoteConnectionFactory"),
+ @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/IncomeQueue"),
  @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
  
-//@DeliveryActive(true)
-
-//@ClusteredSingleton
-//@ResourceAdapter("activemq-rar-4.1.1.rar")
 public class IncomeConsumerBean implements MessageListener {
 
-	private final static Logger LOGGER = Logger.getLogger(IncomeConsumerBean.class.toString());
+	
 	
 	// not sure here, it maybe should be in the IncomeServiceBean
-	@EJB(lookup="java:module/IncomeServiceBean!com.CouponSystem.EJB.IncomeService")
+	
+//	@EJB(lookup="ejb:/CouponSystemWebTier//IncomeServiceBean!com.CouponSystem.EJB.IncomeService")
+//	@EJB(lookup="java:module/IncomeServiceBean!com.CouponSystem.EJB.IncomeService")
+//	@EJB(name="com.CouponSystem.EJB.IncomeService")
+	@EJB
 	private IncomeServiceBean incomeProcess;
 	
     /**
@@ -53,12 +49,12 @@ public class IncomeConsumerBean implements MessageListener {
      */
     public void onMessage(Message message) {
     	
-    	LOGGER.info("Received Message from queue");
     	System.out.println("onMesage ====================================================");
     	// pass the income request to processing by EJB IncomeServiceBean
     	if (message instanceof Income)
     	{
-    		try {
+    		try 
+    		{
 				incomeProcess.storeIncome((Income)message);
 			} catch (FacadeException e) {
 				// TODO Auto-generated catch block
