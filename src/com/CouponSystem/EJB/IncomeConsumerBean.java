@@ -49,7 +49,8 @@ public class IncomeConsumerBean implements MessageListener {
      */
     public void onMessage(Message message) {
     	
-    	System.out.println("onMesage = " + message.toString());
+    	System.out.println("onMesage");
+    	
     	// pass the income request to processing by EJB IncomeServiceBean
     	if (message instanceof Income)
     	{
