@@ -171,6 +171,23 @@ public class CustomerFacade implements CouponClientFacade
 		}
 	}
 	
+	public long getCompanyIdByCouponId(long couponId) throws FacadeException
+	{
+		try 
+		{
+			return custDao.getCompanyIdByCouponId(couponId);
+		} 
+		catch (DAOException e) 
+		{
+			throw new FacadeException(e);
+		}
+	}
+	
+	public Customer getMe()
+	{
+		return this.customer;
+	}
+	
 
 	
 

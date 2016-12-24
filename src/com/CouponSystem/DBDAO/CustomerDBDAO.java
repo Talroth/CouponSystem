@@ -483,4 +483,26 @@ public class CustomerDBDAO implements CustomerDAO
 		}		
 	}
 	
+	@Override
+	public long getCompanyIdByCouponId(long id) throws DAOException {
+		String sql = "SELECT COMP_ID FROM company_coupon WHERE COUPON_ID = ?";
+		try (Connection con = pool.OpenConnection(); PreparedStatement preparedStatement = con.prepareStatement(sql);)
+		{	
+			preparedStatement.setLong(1, id);
+			ResultSet rs = preparedStatement.executeQuery();
+			rs.next();
+			return rs.getLong(1);
+		}
+		catch (SQLException e)
+		{
+			if (e.getMessage() == "Connection was not established")
+			{
+				throw new DAOException(DAOExceptionErrorType.CONNECTION_CLOSED, "Connection error, please refer to system admin");
+			}
+			
+			throw new DAOException(DAOExceptionErrorType.COUPON_DETAILS_FAILED_TO_RETRIEVE,"Failed to retreieve data for the coupon");
+		}
+		
+	}
+	
 }

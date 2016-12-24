@@ -50,6 +50,9 @@ public interface CustomerDAO
 	// check if coupon id belong to specific customer
 	public boolean couponBelongsTo(long couponId, long customerId) throws DAOException;
 	
+	// return id of the company which the coupon belong to
+	public long getCompanyIdByCouponId(long id) throws DAOException;
+	
 	//
 	// login flag
 	//

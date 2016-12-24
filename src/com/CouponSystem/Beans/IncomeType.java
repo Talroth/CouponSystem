@@ -5,8 +5,8 @@ public enum IncomeType
 {
 
 	CUSTOMER_PURCHASE("Customer coupon purchasing"),
-	COMPANY_NEW_COUPON("Company create new coupon",100D),
-	COMPANY_UPDATE_COUPON("Coupon is updated by company",10D);
+	COMPANY_NEW_COUPON("Company create new coupon",-100D),
+	COMPANY_UPDATE_COUPON("Coupon is updated by company",-10D);
 	
 	private String description;
 	private double price;

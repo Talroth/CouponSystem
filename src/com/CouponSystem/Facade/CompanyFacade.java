@@ -223,7 +223,7 @@ public class CompanyFacade implements CouponClientFacade
 		return companyLog;
 	}
 	
-	
+
 	
 	@Override
 	public CouponClientFacade login(String name, String password) throws FacadeException
@@ -247,5 +247,7 @@ public class CompanyFacade implements CouponClientFacade
 		}
 
 	}
+	
+	
 
 }

@@ -38,4 +38,6 @@ public interface CouponDAO
 	
 	// return coupons by coupon name
 	public Collection<Coupon> getCouponByName(String couponName) throws DAOException;
+	
+
 }

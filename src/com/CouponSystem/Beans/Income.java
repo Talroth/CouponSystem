@@ -16,30 +16,20 @@ import org.hibernate.annotations.Type;
 @Table(name="incomelog")
 public class Income implements Serializable {
 
-	// MySql - BIGINT
-	// auto works but intefer with localdatetime type
-
-
-/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	//	@GeneratedValue(strategy=GenerationType.AUTO)
-
+	
 	private long id;
 	
 	private String name;
 	
-	//TODO: check if works
-	@org.hibernate.annotations.Type( type = "LocalDateTimeType" )
+	@Type(type="LocalDateTimeType")
 	private LocalDateTime date;
 	
 	// Use the custom translator - transfer int to MySql
 	@Type(type="com.CouponType.Beans.IncomeTypeUserType")
 	private IncomeType description;
-	
-	// use DOUBLE in MySql
+
 	private double amount;
 	
 	private long custId;
@@ -50,45 +40,26 @@ public class Income implements Serializable {
 		
 	}
 	
-	// for income with coupon price (customer purchase a coupon)
-	public Income(long id, String name, LocalDateTime date, IncomeType description, double couponPrice, long custId, long compId) {
-		this.id = id;
+
+	public Income(String name, LocalDateTime date, IncomeType description, double amount, long custId, long compId) {
 		this.name = name;
 		this.date = date;
 		this.description = description;
-		this.amount = couponPrice;
+		this.amount = amount;
 		this.custId = custId;
 		this.compId = compId;
 	}
 	
-	// for income without coupon price 
-	public Income(long id, String name, LocalDateTime date, IncomeType description, long custId, long compId) {
-		this.id = id;
-		this.name = name;
-		this.date = date;
-		this.description = description;
-		this.custId = custId;
-		this.compId = compId;
-	}
+
 	
 	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
 	
-	// not allow id with negative id
-	// TODO: auto numbering should be added annotation, generatedvalue doesn't works
-//	@Id	
-	public void setId(long id) {
-//		if (id >= 0)
-//		{
-//			this.id = id;
-//		}
-//		else
-//		{
-//			throw new IllegalArgumentException("Id can't be negative");
-//		}
+
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private void setId(long id) {
 		
 		this.id = id;
 	}
@@ -121,17 +92,9 @@ public class Income implements Serializable {
 		return amount;
 	}
 	
-	// if customer purchase use the price, otherwise use the predefined price
-	public void setAmount(double amount) {
-//		// if the action is customer coupon purchase it use the amount according to coupon price
-//		if (this.description.isEqual(IncomeType.CUSTOMER_PURCHASE))
-//		{
+	public void setAmount(double amount) 
+	{
 			this.amount = amount;
-//		}
-//		else
-//		{
-//			amount = description.getPrice();
-//		}
 	}
 
 	public long getCustId() {
