@@ -46,13 +46,20 @@
       <artifactId>jboss-ejb-api_3.2_spec</artifactId>
       <scope>provided</scope>
 </dependency>
-  	<!--
+  	
+<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-multipart -->
+<dependency>
+    <groupId>org.glassfish.jersey.media</groupId>
+    <artifactId>jersey-media-multipart</artifactId>
+    <version>2.13</version>
+</dependency>
+
   	<dependency>
   		<groupId>org.glassfish.jersey.media</groupId>
   		<artifactId>jersey-media-jaxb</artifactId>
   		<version>2.24</version>
   	</dependency>
-  	-->
+  	
   	  <dependency>
   		<groupId>org.glassfish.jersey.ext</groupId>
   		<artifactId>jersey-entity-filtering</artifactId>

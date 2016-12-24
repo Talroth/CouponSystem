@@ -11,7 +11,7 @@ import com.CouponSystem.FacadeException.FacadeException;
 @Stateless
 public class IncomeServiceBean implements IncomeService {
 		
-	@PersistenceContext(unitName="jpa-example")
+	@PersistenceContext(unitName="couponsystemJPA")
 
 	private EntityManager em;
 	
