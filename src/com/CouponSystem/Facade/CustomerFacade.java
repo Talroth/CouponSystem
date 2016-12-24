@@ -171,6 +171,7 @@ public class CustomerFacade implements CouponClientFacade
 		}
 	}
 	
+	// return company id according to coupon id (find which company own the coupon)
 	public long getCompanyIdByCouponId(long couponId) throws FacadeException
 	{
 		try 
@@ -183,6 +184,7 @@ public class CustomerFacade implements CouponClientFacade
 		}
 	}
 	
+	// Return current customer object
 	public Customer getMe()
 	{
 		return this.customer;
