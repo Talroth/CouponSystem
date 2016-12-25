@@ -23,7 +23,6 @@ public class IncomeServiceBean implements IncomeService {
 	@Override
 	public void storeIncome(Income income) throws FacadeException
 	{
-		System.out.println("Store item in OncomeServiceBean");
 		if (income == null)
 			throw new FacadeException("No income");
 		

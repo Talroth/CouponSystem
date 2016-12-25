@@ -3,20 +3,20 @@ package com.CouponSystem.JSONSerial;
 import java.time.LocalDateTime;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
+//
+// Translate LocalDataTime type to XML
+//
+
 public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
 
     @Override
     public LocalDateTime unmarshal(String dateString) throws Exception {
-        //Instant instant = Instant.parse(dateString);
         LocalDateTime dateTime = LocalDateTime.parse(dateString);
-        //LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         return dateTime;
     }
 
     @Override
     public String marshal(LocalDateTime dateTime) throws Exception {
-//        Instant instant = dateTime.toInstant(ZoneOffset.UTC);
-//        return DateTimeFormatter.ISO_DATE_TIME.format(instant);
     	return dateTime.toString();
     }
 }
