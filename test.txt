@@ -1,3 +1,0 @@
-Company details:
-Company [id=0, compName=McHoland, password=f12e12, email=McHoland@gmail.com]
-Company exists
